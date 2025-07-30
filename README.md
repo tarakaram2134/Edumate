@@ -20,21 +20,20 @@ All queries and processing are handled locally without any internet requirement
 
 Project Structure
 
+Project Structure
+
 Edumate/
-│
-├── app.py                 # Main interface with two tabs (Persistent and Quick)
-├── document_utils.py      # Handles PDF/DOCX loading and splitting
-├── llm_generate.py        # Generates answers using a local LLM
-├── persistent_store.py    # Persistent vector indexing and querying
-├── quick_index.py         # Temporary index for quick sessions
-│
-├── vector_store/          # Stores persistent FAISS index
-├── logs/                  # Stores chat history as markdown logs
-├── data/                  # User-provided PDFs (optional)
-│
-├── requirements.txt       # Project dependencies
-├── README.md              # Project documentation
-├── .gitignore             # Git exclusions
+├── app.py                 # Main app with two tabs: Persistent & Quick session
+├── document_utils.py     # Handles PDF/DOCX parsing and chunking
+├── llm_generate.py       # Generates answers using local LLM (FLAN-T5/Mistral)
+├── persistent_store.py   # Adds and queries data in the persistent FAISS store
+├── quick_index.py        # Temporary FAISS store for quick PDF sessions
+├── vector_store/         # Stores persistent FAISS index for semester sessions
+├── data/                 # (Optional) Folder where users can store uploaded notes
+├── logs/                 # Markdown log of chat sessions (auto-generated)
+├── README.md             # Project overview and instructions
+├── requirements.txt      # All dependencies
+└── .gitignore            # Standard Git ignore rules
 
 How to Run
 
