@@ -19,8 +19,7 @@ Interactive and clean chat interface using Gradio
 All queries and processing are handled locally without any internet requirement
 
 Project Structure
-
-<pre><code>```text Edumate/ ├── app.py # Main app with two tabs: Persistent & Quick session ├── document_utils.py # Handles PDF/DOCX parsing and chunking ├── llm_generate.py # Generates answers using local LLM (FLAN-T5/Mistral) ├── persistent_store.py # Adds and queries data in the persistent FAISS store ├── quick_index.py # Temporary FAISS store for quick PDF sessions ├── vector_store/ # Stores persistent FAISS index for semester sessions ├── data/ # (Optional) Folder where users can store uploaded notes ├── logs/ # Markdown log of chat sessions (auto-generated) ├── README.md # Project overview and instructions ├── requirements.txt # All dependencies └── .gitignore # Standard Git ignore rules ```</code></pre>
+<pre> ``` Edumate/ ├── app.py # Main app with two tabs: Persistent & Quick session ├── document_utils.py # Handles PDF/DOCX parsing and chunking ├── llm_generate.py # Generates answers using local LLM (FLAN-T5/Mistral) ├── persistent_store.py # Adds and queries data in the persistent FAISS store ├── quick_index.py # Temporary FAISS store for quick PDF sessions ├── vector_store/ # Stores persistent FAISS index for semester sessions ├── data/ # (Optional) Folder where users can store uploaded notes ├── logs/ # Markdown log of chat sessions (auto-generated) ├── README.md # Project overview and instructions ├── requirements.txt # All dependencies └── .gitignore # Standard Git ignore rules ``` </pre>
 
 How to Run
 
