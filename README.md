@@ -1,113 +1,59 @@
+EduMate: A Private RAG-Powered Educational Assistant
 
-# EduMate – A Private RAG-Powered Educational Assistant 🧠📚
+EduMate is a local-first educational chatbot that helps students ask questions from their uploaded lecture notes using Retrieval-Augmented Generation (RAG). It now supports two modes: persistent sessions for semester-long study and quick sessions for instant document-based Q&A.
 
-EduMate is an intelligent, local-first educational assistant that helps you query your course notes using state-of-the-art Retrieval-Augmented Generation (RAG). Powered by a local language model and vector search, EduMate provides accurate, contextual answers without needing internet access or external APIs.
+Features
 
----
+Persistent Session:
+Upload notes progressively during the semester
+Automatically builds and updates a long-term FAISS knowledge base
+Designed for continued learning and review
 
-## 🚀 Features
+Quick Session:
+Upload a single PDF and ask questions immediately
+Uses a temporary vector store and does not persist data
+Ideal for quick answers without affecting your main knowledge base
 
-- 🔍 Ask questions from your uploaded lecture notes (PDFs)
-- 🧠 Retrieves relevant context using FAISS vector search
-- 🤖 Generates answers using locally run LLMs (FLAN-T5, Mistral)
-- 📄 Clean, chat-style interface built with Gradio
-- 💾 Saves all Q&A to Markdown logs
-- 🔐 Runs entirely offline — no data leaves your machine
+Powered by local LLMs such as FLAN-T5 or Mistral
+Interactive and clean chat interface using Gradio
+All queries and processing are handled locally without any internet requirement
 
----
+Project Structure
 
-## 📁 Folder Structure
+Edumate/
+│
+├── app.py                 # Main interface with two tabs (Persistent and Quick)
+├── document_utils.py      # Handles PDF/DOCX loading and splitting
+├── llm_generate.py        # Generates answers using a local LLM
+├── persistent_store.py    # Persistent vector indexing and querying
+├── quick_index.py         # Temporary index for quick sessions
+│
+├── vector_store/          # Stores persistent FAISS index
+├── logs/                  # Stores chat history as markdown logs
+├── data/                  # User-provided PDFs (optional)
+│
+├── requirements.txt       # Project dependencies
+├── README.md              # Project documentation
+├── .gitignore             # Git exclusions
 
-```
-EduMate/
-├── app.py                 # Gradio UI
-├── test_qa.py             # Script interface for testing
-├── rag_inference.py       # Core inference logic
-├── qa_chain.py            # Vector retrieval layer
-├── llm_generate.py        # Model generation layer
-├── rag_pipeline.py        # FAISS index builder
-├── document_loader.py     # Loads & parses PDFs
-├── index_notes.py         # Runs PDF indexing
-├── sample_notes/          # Sample PDFs for demo
-├── vector_store/          # Auto-generated FAISS index
-├── logs/                  # Saved Q&A interactions
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+How to Run
 
----
+1. Clone the repo and move into the folder
+   git clone https://github.com/your-username/Edumate
+   cd Edumate
 
-## 🛠️ Installation
+2. Create and activate the environment
+   conda create -n edumate python=3.10
+   conda activate edumate
 
-```bash
-# 1. Clone the repo
-git clone https://github.com/yourusername/edumate.git
-cd edumate
+3. Install all required packages
+   pip install -r requirements.txt
 
-# 2. Create and activate your environment (recommended)
-conda create -n edumate python=3.10 -y
-conda activate edumate
+4. Run the chatbot app
+   python app.py
 
-# 3. Install dependencies
-pip install -r requirements.txt
-```
+You can access the chatbot at http://127.0.0.1:7860
 
----
+License
 
-## 📚 Usage
-
-### ▶️ Index your PDFs
-Place your lecture PDFs in `sample_notes/` and run:
-
-```bash
-python index_notes.py
-```
-
-### 💬 Launch the Chat Interface
-
-```bash
-python app.py
-```
-
-Open `http://127.0.0.1:7860` in your browser to interact with EduMate.
-
----
-
-## ✨ Example Question
-
-```
-What are Huffman trees?
-```
-
-EduMate will search your notes, retrieve relevant chunks, and generate a helpful answer.
-
----
-
-## 🧠 Models Supported
-
-- `google/flan-t5-base` / `flan-t5-large` (default)
-- `mistralai/Mistral-7B-Instruct` (optional, with GPU support)
-
----
-
-## ✅ TODOs (for future versions)
-
-- [ ] PDF drag-and-drop uploader
-- [ ] Per-session chat history viewer
-- [ ] Fine-tuned LLM adapter (LoRA or QLoRA)
-- [ ] Web deployment via Hugging Face Spaces or Streamlit Cloud
-
----
-
-## 🧑‍💻 Author
-
-**Taraka Ram Donepudi**  
-Master’s in Computer Science  
-Project: AI/ML-Powered Education Tool
-
----
-
-## 🛡 License
-
-MIT License – free to use, fork, and improve!
+This project is licensed under the MIT License.
